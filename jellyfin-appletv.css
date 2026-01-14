@@ -1,0 +1,842 @@
+/**
+ * Jellyfin Apple TV Custom CSS Theme
+ * 
+ * This custom CSS transforms Jellyfin's interface to mimic the Apple TV design
+ * with San Francisco fonts, glassmorphism effects, and Apple's signature aesthetics.
+ * 
+ * Installation:
+ * 1. Copy this entire CSS content
+ * 2. Go to Jellyfin Dashboard > General > Custom CSS
+ * 3. Paste the CSS and save
+ * 4. Refresh your browser to see the changes
+ */
+
+/* ===== FONT IMPORTS ===== */
+/* Import Inter as a high-quality fallback for SF Pro fonts */
+/* On Apple devices, system fonts (-apple-system) will be used automatically */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* For better Apple TV font approximation using system fonts */
+/* On Apple devices: SF Pro Display/Text will be used */
+/* On other devices: Inter provides a similar geometric appearance */
+:root {
+    --apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+    --apple-font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+    
+    /* Apple TV Color Palette */
+    --appletv-black: #000000;
+    --appletv-dark-gray: #0a0a0a;
+    --appletv-gray: #1c1c1e;
+    --appletv-light-gray: #2c2c2e;
+    --appletv-lighter-gray: #3a3a3c;
+    --appletv-white: #ffffff;
+    --appletv-focus: rgba(255, 255, 255, 0.15);
+    --appletv-accent: #0a84ff;
+    --appletv-accent-hover: #409cff;
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(28, 28, 30, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    
+    /* Shadows and Glows */
+    --focus-glow: 0 0 0 6px rgba(255, 255, 255, 0.3);
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --card-hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    
+    /* Spacing (Apple TV uses generous spacing) */
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 20px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+}
+
+/* ===== GLOBAL STYLES ===== */
+* {
+    font-family: var(--apple-font) !important;
+}
+
+body {
+    background: var(--appletv-black) !important;
+    color: var(--appletv-white) !important;
+    font-family: var(--apple-font-text) !important;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+/* Main background with subtle gradient */
+.backgroundContainer,
+#indexPage,
+.mainAnimatedPages {
+    background: linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%) !important;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6,
+.sectionTitle,
+.pageTitle {
+    font-family: var(--apple-font) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--appletv-white) !important;
+}
+
+h1, .pageTitle {
+    font-size: 48px !important;
+    font-weight: 800 !important;
+    margin-bottom: var(--spacing-lg) !important;
+}
+
+h2, .sectionTitle {
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+h3 {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+}
+
+p, .fieldDescription, .secondaryText {
+    font-family: var(--apple-font-text) !important;
+    font-weight: 400 !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    line-height: 1.5 !important;
+    letter-spacing: -0.01em !important;
+}
+
+/* ===== NAVIGATION & HEADER ===== */
+.skinHeader,
+.headerTop {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(40px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+    border-bottom: 1px solid var(--glass-border) !important;
+    padding: var(--spacing-md) var(--spacing-lg) !important;
+}
+
+.headerButton,
+.headerUserButton,
+.headerSearchButton {
+    background: transparent !important;
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--spacing-sm) var(--spacing-md) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.headerButton:hover,
+.headerUserButton:hover,
+.headerSearchButton:hover {
+    background: var(--appletv-focus) !important;
+    transform: scale(1.05) !important;
+}
+
+/* Navigation menu items */
+.navMenuOption {
+    background: transparent !important;
+    border: none !important;
+    border-radius: var(--radius-md) !important;
+    padding: var(--spacing-sm) var(--spacing-md) !important;
+    margin: 4px 0 !important;
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.navMenuOption:hover,
+.navMenuOption-selected {
+    background: var(--appletv-focus) !important;
+    color: var(--appletv-white) !important;
+    transform: translateX(4px) !important;
+}
+
+.navMenuOption-selected {
+    font-weight: 600 !important;
+}
+
+/* ===== SIDEBAR ===== */
+.mainDrawer,
+.navDrawer {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(40px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+    border-right: 1px solid var(--glass-border) !important;
+}
+
+.drawer-open .mainDrawerPanel {
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* ===== CARDS & MEDIA ITEMS ===== */
+.card,
+.cardBox,
+.itemTile {
+    background: var(--appletv-gray) !important;
+    border-radius: var(--radius-lg) !important;
+    border: none !important;
+    box-shadow: var(--card-shadow) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow: hidden !important;
+}
+
+.card:hover,
+.cardBox:hover,
+.itemTile:hover {
+    transform: scale(1.08) translateY(-8px) !important;
+    box-shadow: var(--card-hover-shadow) !important;
+    z-index: 10 !important;
+}
+
+.card:focus,
+.cardBox:focus,
+.itemTile:focus {
+    outline: none !important;
+    box-shadow: var(--focus-glow), var(--card-hover-shadow) !important;
+    transform: scale(1.08) translateY(-8px) !important;
+}
+
+/* Card content */
+.cardContent {
+    padding: var(--spacing-md) !important;
+}
+
+.cardText,
+.cardTitle {
+    font-family: var(--apple-font) !important;
+    font-weight: 600 !important;
+    font-size: 17px !important;
+    color: var(--appletv-white) !important;
+    margin-top: var(--spacing-sm) !important;
+}
+
+.cardText-secondary {
+    font-family: var(--apple-font-text) !important;
+    font-weight: 400 !important;
+    font-size: 15px !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Poster cards */
+.cardOverlayButton,
+.cardImageContainer {
+    border-radius: var(--radius-lg) !important;
+    overflow: hidden !important;
+}
+
+.cardImage,
+.cardImageContainer img {
+    border-radius: var(--radius-lg) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.card:hover .cardImage,
+.cardBox:hover .cardImageContainer img {
+    transform: scale(1.05) !important;
+}
+
+/* Card overlays */
+.cardOverlay {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%) !important;
+}
+
+/* ===== BUTTONS ===== */
+button,
+.button-flat,
+.raisedButton,
+.button-submit {
+    background: var(--appletv-accent) !important;
+    color: var(--appletv-white) !important;
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--spacing-sm) var(--spacing-lg) !important;
+    font-family: var(--apple-font) !important;
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer !important;
+}
+
+button:hover,
+.button-flat:hover,
+.raisedButton:hover,
+.button-submit:hover {
+    background: var(--appletv-accent-hover) !important;
+    transform: scale(1.02) !important;
+}
+
+button:focus,
+.button-flat:focus,
+.raisedButton:focus {
+    outline: none !important;
+    box-shadow: var(--focus-glow) !important;
+}
+
+/* Secondary buttons */
+.button-flat-secondary,
+.btnCancel {
+    background: var(--appletv-light-gray) !important;
+    color: var(--appletv-white) !important;
+}
+
+.button-flat-secondary:hover,
+.btnCancel:hover {
+    background: var(--appletv-lighter-gray) !important;
+}
+
+/* Icon buttons */
+.paper-icon-button-light,
+.buttonCircle {
+    background: var(--appletv-light-gray) !important;
+    border-radius: 50% !important;
+    padding: var(--spacing-sm) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.paper-icon-button-light:hover,
+.buttonCircle:hover {
+    background: var(--appletv-lighter-gray) !important;
+    transform: scale(1.1) !important;
+}
+
+/* Play button - special treatment */
+.btnPlay,
+.mainDetailButtons .button-flat:first-child {
+    background: var(--appletv-white) !important;
+    color: var(--appletv-black) !important;
+    font-weight: 700 !important;
+    padding: var(--spacing-md) var(--spacing-xl) !important;
+    border-radius: var(--radius-xl) !important;
+}
+
+.btnPlay:hover,
+.mainDetailButtons .button-flat:first-child:hover {
+    background: rgba(255, 255, 255, 0.9) !important;
+    transform: scale(1.05) !important;
+}
+
+/* ===== FORM INPUTS ===== */
+input,
+textarea,
+select,
+.inputElement {
+    background: var(--appletv-light-gray) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: var(--radius-md) !important;
+    color: var(--appletv-white) !important;
+    padding: var(--spacing-sm) var(--spacing-md) !important;
+    font-family: var(--apple-font-text) !important;
+    font-size: 17px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+.inputElement:focus {
+    outline: none !important;
+    border-color: var(--appletv-accent) !important;
+    box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.2) !important;
+    background: var(--appletv-lighter-gray) !important;
+}
+
+/* ===== MODALS & DIALOGS ===== */
+.dialog,
+.dialogContent {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(60px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(60px) saturate(180%) !important;
+    border-radius: var(--radius-xl) !important;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8) !important;
+}
+
+.dialogBackdrop {
+    background: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+}
+
+.dialogHeader {
+    border-bottom: 1px solid var(--glass-border) !important;
+    padding: var(--spacing-lg) !important;
+}
+
+.dialogContentInner {
+    padding: var(--spacing-lg) !important;
+}
+
+/* ===== DETAIL PAGES ===== */
+.detailPagePrimaryContainer,
+.detailPageWrapperContainer {
+    background: transparent !important;
+}
+
+.detailPageContent {
+    padding: var(--spacing-xl) !important;
+}
+
+/* Detail page backdrop */
+.detailImageContainer,
+.itemBackdrop {
+    opacity: 0.3 !important;
+}
+
+.detailImageContainer::after,
+.itemBackdrop::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(180deg, 
+        rgba(0, 0, 0, 0.3) 0%, 
+        rgba(0, 0, 0, 0.8) 50%, 
+        rgba(0, 0, 0, 1) 100%) !important;
+}
+
+/* Detail page info */
+.detailLogo {
+    max-width: 500px !important;
+    margin-bottom: var(--spacing-lg) !important;
+}
+
+.itemName {
+    font-size: 56px !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    margin-bottom: var(--spacing-md) !important;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+}
+
+.itemGenres,
+.itemMiscInfo {
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+.overview,
+.itemOverview {
+    font-size: 19px !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    max-width: 800px !important;
+    margin: var(--spacing-lg) 0 !important;
+}
+
+/* ===== LISTS & GRIDS ===== */
+.itemsContainer,
+.verticalSection {
+    padding: var(--spacing-md) 0 !important;
+}
+
+.scrollSlider {
+    padding: var(--spacing-md) 0 !important;
+}
+
+/* Horizontal scrolling sections */
+.scrollSlider .card,
+.scrollSlider .cardBox {
+    margin-right: var(--spacing-md) !important;
+}
+
+/* Grid layout */
+.itemsContainer.vertical-wrap {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    padding: var(--spacing-lg) !important;
+}
+
+/* ===== PROGRESS BARS ===== */
+.itemProgressBar,
+.progressbar {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 4px !important;
+    height: 4px !important;
+    overflow: hidden !important;
+}
+
+.itemProgressBarForeground,
+.progressbar-value {
+    background: var(--appletv-accent) !important;
+    border-radius: 4px !important;
+}
+
+/* ===== BADGES & INDICATORS ===== */
+.playedIndicator,
+.countIndicator {
+    background: var(--appletv-accent) !important;
+    color: var(--appletv-white) !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 4px 8px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+}
+
+.mediaInfoText,
+.mediaInfoItem {
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 6px 12px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    margin: 4px !important;
+}
+
+/* ===== VIDEO PLAYER OSD ===== */
+.videoOsdBottom,
+.osdControls {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+}
+
+.osdTitle {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+}
+
+.osdTextContainer {
+    font-size: 17px !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Playback controls */
+.sliderBubble {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-radius: var(--radius-md) !important;
+    border: 1px solid var(--glass-border) !important;
+    padding: var(--spacing-sm) var(--spacing-md) !important;
+    font-weight: 600 !important;
+}
+
+/* ===== SEARCH ===== */
+.searchResults {
+    padding: var(--spacing-lg) !important;
+}
+
+.searchResultsContainer {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 10px !important;
+    height: 10px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 10px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent !important;
+}
+
+/* ===== CONTEXT MENU ===== */
+.contextMenu,
+.paperList {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(60px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(60px) saturate(180%) !important;
+    border-radius: var(--radius-lg) !important;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8) !important;
+    padding: var(--spacing-xs) !important;
+}
+
+.listItem,
+.listItemButton {
+    border-radius: var(--radius-md) !important;
+    margin: 2px 0 !important;
+    padding: var(--spacing-sm) var(--spacing-md) !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.listItem:hover,
+.listItemButton:hover {
+    background: var(--appletv-focus) !important;
+}
+
+/* ===== HOME SECTIONS ===== */
+.homeSectionsContainer {
+    padding: var(--spacing-lg) !important;
+}
+
+.section {
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+.sectionTitle {
+    padding: 0 var(--spacing-lg) var(--spacing-md) var(--spacing-lg) !important;
+}
+
+/* ===== LIBRARY VIEW ===== */
+.libraryViewNav {
+    background: transparent !important;
+    padding: var(--spacing-md) var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-lg) !important;
+}
+
+.libraryViewNav button {
+    background: var(--appletv-light-gray) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--spacing-sm) var(--spacing-lg) !important;
+    margin-right: var(--spacing-sm) !important;
+}
+
+.libraryViewNav button.is-active {
+    background: var(--appletv-white) !important;
+    color: var(--appletv-black) !important;
+}
+
+/* ===== TABS ===== */
+.tabs,
+.tabButton {
+    background: transparent !important;
+    border: none !important;
+}
+
+.tabButton {
+    border-radius: var(--radius-md) !important;
+    padding: var(--spacing-sm) var(--spacing-lg) !important;
+    margin: 0 4px !important;
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.tabButton:hover {
+    color: var(--appletv-white) !important;
+    background: var(--appletv-focus) !important;
+}
+
+.tabButton.is-active {
+    color: var(--appletv-white) !important;
+    font-weight: 600 !important;
+    background: var(--appletv-light-gray) !important;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card,
+.cardBox,
+.itemTile {
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* ===== RATINGS & STARS ===== */
+.starIcon {
+    color: #ffd700 !important;
+}
+
+.criticRating {
+    background: var(--appletv-light-gray) !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 4px 10px !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+}
+
+/* ===== USER MENU ===== */
+.userMenu {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(60px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(60px) saturate(180%) !important;
+    border-radius: var(--radius-lg) !important;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* ===== CHAPTER IMAGES ===== */
+.chapterThumbCard,
+.chapterThumbContainer {
+    border-radius: var(--radius-md) !important;
+    overflow: hidden !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.chapterThumbCard:hover {
+    transform: scale(1.05) !important;
+    box-shadow: var(--card-hover-shadow) !important;
+}
+
+/* ===== SETTINGS PAGE ===== */
+.settingsContainer {
+    padding: var(--spacing-xl) !important;
+}
+
+.settingsSection {
+    background: var(--appletv-gray) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-lg) !important;
+}
+
+.checkboxLabel {
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    color: var(--appletv-white) !important;
+}
+
+/* ===== TOAST NOTIFICATIONS ===== */
+.toast,
+.snackbar {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(40px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+    border-radius: var(--radius-lg) !important;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+    font-family: var(--apple-font-text) !important;
+    font-weight: 500 !important;
+}
+
+/* ===== LOADING SPINNER ===== */
+.mdl-spinner__layer {
+    border-color: var(--appletv-white) !important;
+}
+
+/* ===== REMOTE CONTROL SUPPORT ===== */
+/* For TV interfaces and remote controls */
+.focusable:focus,
+.itemAction:focus,
+a:focus {
+    outline: none !important;
+    box-shadow: var(--focus-glow) !important;
+    transform: scale(1.05) !important;
+}
+
+/* ===== ACCESSIBILITY ===== */
+/* Maintain high contrast for accessibility */
+.button-link {
+    color: var(--appletv-accent) !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+}
+
+.button-link:hover {
+    color: var(--appletv-accent-hover) !important;
+    text-decoration: underline !important;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+    h1, .pageTitle {
+        font-size: 36px !important;
+    }
+    
+    h2, .sectionTitle {
+        font-size: 24px !important;
+    }
+    
+    .itemName {
+        font-size: 40px !important;
+    }
+    
+    .itemsContainer.vertical-wrap {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-lg: 24px;
+        --spacing-xl: 32px;
+    }
+    
+    h1, .pageTitle {
+        font-size: 28px !important;
+    }
+    
+    h2, .sectionTitle {
+        font-size: 20px !important;
+    }
+    
+    .itemsContainer.vertical-wrap {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
+        gap: var(--spacing-sm) !important;
+    }
+}
+
+/* ===== JELLYFIN-SPECIFIC OVERRIDES ===== */
+/* Override any Jellyfin defaults that conflict with Apple TV styling */
+.layout-mobile .padded-left,
+.layout-mobile .padded-right {
+    padding-left: var(--spacing-md) !important;
+    padding-right: var(--spacing-md) !important;
+}
+
+.layout-tv .padded-left,
+.layout-tv .padded-right {
+    padding-left: var(--spacing-lg) !important;
+    padding-right: var(--spacing-lg) !important;
+}
+
+/* Remove Jellyfin branding color in favor of Apple TV colors */
+.accent-color,
+.button-accent {
+    background-color: var(--appletv-accent) !important;
+}
+
+/* ===== FINAL POLISH ===== */
+/* Smooth transitions for all interactive elements */
+a, button, .card, .listItem, input, select, textarea {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ensure text is always readable */
+.cardText-first,
+.cardText-title {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Apple TV-style text rendering */
+body {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
