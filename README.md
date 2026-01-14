@@ -70,9 +70,11 @@ For more installation options and detailed instructions, see [INSTALLATION.md](I
 
 ## 📁 Files
 
-- `jellyfin-appletv.css` - The main custom CSS theme
-- `INSTALLATION.md` - Detailed installation and configuration guide
-- `README.md` - This file
+- **`jellyfin-appletv.css`** - The main custom CSS theme file
+- **`README.md`** - This file - Quick start and overview
+- **`INSTALLATION.md`** - Detailed installation guide with multiple methods
+- **`DESIGN-PRINCIPLES.md`** - Apple's Human Interface Guidelines implementation
+- **`PREVIEW.md`** - Visual examples and interface walkthroughs
 
 ## 🎨 What's Included
 
@@ -100,14 +102,18 @@ This theme styles every aspect of the Jellyfin interface:
 - ✅ Toast notifications
 - ✅ Loading states
 
-## 🖼️ Screenshots
+## 🖼️ Preview & Screenshots
 
-> **Note**: After installation, the interface will feature:
-> - Clean, card-based layout
-> - Dark backgrounds with subtle gradients
-> - Smooth hover and focus effects
-> - Glassmorphic headers and menus
-> - Apple TV-style typography
+> **Want to see what it looks like?** Check out [PREVIEW.md](PREVIEW.md) for detailed visual examples and interface walkthroughs.
+
+After installation, the interface will feature:
+- **Clean, card-based layout** with Apple TV-style design
+- **Dark backgrounds** with subtle gradients (true black #000000)
+- **Smooth hover and focus effects** (scale 1.08 + white glow)
+- **Glassmorphic headers and menus** with backdrop blur
+- **Apple TV-style typography** (San Francisco fonts or system equivalents)
+- **Generous spacing** optimized for comfortable viewing
+- **Remote/keyboard friendly** with clear focus states
 
 ## 🎨 Customization
 
