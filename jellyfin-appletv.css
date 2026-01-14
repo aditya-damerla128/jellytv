@@ -12,13 +12,16 @@
  */
 
 /* ===== FONT IMPORTS ===== */
-/* Import SF Pro Display and SF Pro Text (Apple's San Francisco fonts) */
+/* Import Inter as a high-quality fallback for SF Pro fonts */
+/* On Apple devices, system fonts (-apple-system) will be used automatically */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 /* For better Apple TV font approximation using system fonts */
+/* On Apple devices: SF Pro Display/Text will be used */
+/* On other devices: Inter provides a similar geometric appearance */
 :root {
-    --apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
-    --apple-font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+    --apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+    --apple-font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
     
     /* Apple TV Color Palette */
     --appletv-black: #000000;
@@ -732,11 +735,6 @@ select:focus,
 }
 
 /* ===== LOADING SPINNER ===== */
-.mdl-spinner,
-.loading-spinner {
-    /* Apple TV uses white spinner */
-}
-
 .mdl-spinner__layer {
     border-color: var(--appletv-white) !important;
 }

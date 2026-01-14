@@ -55,9 +55,10 @@ JellyTV brings the sleek, minimalist design of Apple TV to your Jellyfin media s
 
 3. **Refresh your browser** (`Ctrl+F5` or `Cmd+Shift+R`)
 
-For more installation options and detailed instructions, see [INSTALLATION.md](INSTALLATION.md).
-
-> **Note**: The CDN method (Method 1) is recommended as you'll automatically receive theme updates when refreshing. The direct copy-paste method requires manually updating the CSS when new versions are released.
+> **Note**: 
+> - The CDN method (Method 1) allows you to receive theme updates. When updates are available, do a **hard refresh** (`Ctrl+F5` or `Cmd+Shift+R`) to get the latest version.
+> - The direct copy-paste method (Method 2) requires manually updating the CSS when new versions are released.
+> - For immediate updates without cache issues, you can add a version parameter: `?v=1.0` to the CDN URL and increment it when needed.
 
 ## 📋 Requirements
 
