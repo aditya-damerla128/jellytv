@@ -19,22 +19,22 @@
     --apple-font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
     
     /* Apple TV Color Palette */
-    --appletv-black: #000000;
-    --appletv-dark-gray: #0b0b0b;
-    --appletv-gray: #1c1c1e;
-    --appletv-light-gray: #2c2c2e;
-    --appletv-lighter-gray: #3a3a3c;
+    --appletv-black: #07080d;
+    --appletv-dark-gray: #0f1421;
+    --appletv-gray: #151c2b;
+    --appletv-light-gray: #202a3d;
+    --appletv-lighter-gray: #2a3852;
     --appletv-white: #ffffff;
     --appletv-focus: rgba(255, 255, 255, 0.18);
     --appletv-accent: #0a84ff;
     --appletv-accent-hover: #3aa0ff;
     
     /* Glassmorphism */
-    --glass-bg: rgba(18, 18, 18, 0.8);
-    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-bg: rgba(15, 20, 33, 0.82);
+    --glass-border: rgba(255, 255, 255, 0.08);
     
     /* Shadows and Glows */
-    --focus-glow: 0 0 0 4px rgba(255, 255, 255, 0.35);
+    --focus-glow: 0 0 0 4px rgba(255, 255, 255, 0.4);
     --card-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
     --card-hover-shadow: 0 18px 36px rgba(0, 0, 0, 0.7);
     
@@ -59,7 +59,7 @@
 
 body {
     background: var(--appletv-black) !important;
-    color: var(--appletv-white) !important;
+    color: #f5f6f8 !important;
     font-family: var(--apple-font-text) !important;
     font-weight: 400;
     letter-spacing: -0.01em;
@@ -69,8 +69,9 @@ body {
 .backgroundContainer,
 #indexPage,
 .mainAnimatedPages {
-    background: radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 40%),
-        linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%) !important;
+    background: radial-gradient(circle at 15% 0%, rgba(80, 120, 200, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 85% 10%, rgba(45, 70, 130, 0.22) 0%, transparent 50%),
+        linear-gradient(180deg, #0a0f1a 0%, #0b1220 40%, #07080d 100%) !important;
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -80,7 +81,8 @@ h1, h2, h3, h4, h5, h6,
     font-family: var(--apple-font) !important;
     font-weight: 700 !important;
     letter-spacing: -0.02em !important;
-    color: var(--appletv-white) !important;
+    color: #f5f6f8 !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
 }
 
 h1, .pageTitle {
@@ -103,7 +105,7 @@ h3 {
 p, .fieldDescription, .secondaryText {
     font-family: var(--apple-font-text) !important;
     font-weight: 400 !important;
-    color: rgba(255, 255, 255, 0.7) !important;
+    color: rgba(235, 238, 245, 0.78) !important;
     line-height: 1.5 !important;
     letter-spacing: -0.01em !important;
 }
@@ -111,11 +113,11 @@ p, .fieldDescription, .secondaryText {
 /* ===== NAVIGATION & HEADER ===== */
 .skinHeader,
 .headerTop {
-    background: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border-bottom: none !important;
-    padding: var(--spacing-sm) var(--spacing-lg) !important;
+    background: rgba(15, 20, 33, 0.72) !important;
+    backdrop-filter: blur(28px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(160%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    padding: 10px var(--spacing-lg) !important;
 }
 
 .headerButton,
@@ -178,7 +180,7 @@ p, .fieldDescription, .secondaryText {
 .itemTile {
     background: var(--appletv-gray) !important;
     border-radius: var(--radius-lg) !important;
-    border: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
     box-shadow: var(--card-shadow) !important;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
     overflow: hidden !important;
@@ -210,15 +212,16 @@ p, .fieldDescription, .secondaryText {
     font-family: var(--apple-font) !important;
     font-weight: 600 !important;
     font-size: 17px !important;
-    color: var(--appletv-white) !important;
+    color: #f4f6fb !important;
     margin-top: var(--spacing-sm) !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
 }
 
 .cardText-secondary {
     font-family: var(--apple-font-text) !important;
     font-weight: 400 !important;
     font-size: 15px !important;
-    color: rgba(255, 255, 255, 0.6) !important;
+    color: rgba(220, 226, 235, 0.7) !important;
 }
 
 /* Poster cards */
@@ -606,15 +609,16 @@ select:focus,
 }
 
 .libraryViewNav button {
-    background: var(--appletv-light-gray) !important;
-    border-radius: var(--radius-lg) !important;
-    padding: var(--spacing-sm) var(--spacing-lg) !important;
-    margin-right: var(--spacing-sm) !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-radius: 999px !important;
+    padding: 8px 18px !important;
+    margin-right: 10px !important;
 }
 
 .libraryViewNav button.is-active {
-    background: var(--appletv-white) !important;
-    color: var(--appletv-black) !important;
+    background: #f2f4f8 !important;
+    color: #0b0f18 !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35) !important;
 }
 
 /* ===== TABS ===== */
@@ -630,7 +634,7 @@ select:focus,
     margin: 0 6px !important;
     font-size: 17px !important;
     font-weight: 500 !important;
-    color: rgba(255, 255, 255, 0.7) !important;
+    color: rgba(235, 238, 245, 0.85) !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
@@ -640,9 +644,34 @@ select:focus,
 }
 
 .tabButton.is-active {
-    color: var(--appletv-white) !important;
+    color: #0b0f18 !important;
     font-weight: 600 !important;
-    background: rgba(255, 255, 255, 0.16) !important;
+    background: #f2f4f8 !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* ===== ALPHABET PICKER ===== */
+.alphaPicker,
+.alphabetPicker {
+    background: transparent !important;
+}
+
+.alphaPicker .button,
+.alphabetPicker .button,
+.alphaPickerButton,
+.alphabetPickerButton {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #f4f6fb !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.alphaPicker .button.is-active,
+.alphabetPicker .button.is-active,
+.alphaPickerButton.is-active,
+.alphabetPickerButton.is-active {
+    background: #f2f4f8 !important;
+    color: #0b0f18 !important;
 }
 
 /* ===== ANIMATIONS ===== */
@@ -815,7 +844,15 @@ a:focus {
 /* Remove Jellyfin branding color in favor of Apple TV colors */
 .accent-color,
 .button-accent {
-    background-color: var(--appletv-accent) !important;
+    background-color: rgba(255, 255, 255, 0.14) !important;
+    color: #f5f6f8 !important;
+}
+
+.button-accent:hover,
+.button-flat.button-accent:hover,
+.raisedButton.button-accent:hover,
+.button-submit.button-accent:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 /* ===== FINAL POLISH ===== */
