@@ -235,6 +235,14 @@ p, .fieldDescription, .secondaryText {
 .cardImageContainer img {
     border-radius: var(--radius-lg) !important;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+.cardImageContainer {
+    background-color: rgba(17, 23, 35, 0.9) !important;
+    background-size: cover !important;
+    background-position: center !important;
 }
 
 .card:hover .cardImage,
@@ -453,9 +461,6 @@ select:focus,
 
 /* Grid layout */
 .itemsContainer.vertical-wrap {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
-    gap: var(--spacing-lg) !important;
     padding: var(--spacing-lg) !important;
 }
 
@@ -533,9 +538,7 @@ select:focus,
 }
 
 .searchResultsContainer {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
-    gap: var(--spacing-lg) !important;
+    padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg) !important;
 }
 
 /* ===== SCROLLBAR ===== */
@@ -628,6 +631,12 @@ select:focus,
     border: none !important;
 }
 
+.emby-tabs,
+.sectionTabs {
+    background: transparent !important;
+    border: none !important;
+}
+
 .tabButton {
     border-radius: 999px !important;
     padding: 8px 18px !important;
@@ -650,6 +659,31 @@ select:focus,
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35) !important;
 }
 
+.emby-tab-button,
+.sectionTabs .emby-tab-button {
+    border-radius: 999px !important;
+    padding: 8px 18px !important;
+    margin: 0 6px !important;
+    color: rgba(235, 238, 245, 0.85) !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    font-weight: 500 !important;
+}
+
+.emby-tab-button:hover,
+.sectionTabs .emby-tab-button:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+    color: #f5f6f8 !important;
+}
+
+.emby-tab-button-active,
+.sectionTabs .emby-tab-button-active {
+    background: #f2f4f8 !important;
+    color: #0b0f18 !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35) !important;
+}
+
 /* ===== ALPHABET PICKER ===== */
 .alphaPicker,
 .alphabetPicker {
@@ -666,10 +700,26 @@ select:focus,
     border: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
+.alphaPickerButton-tv,
+.alphabetPickerButton-tv {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #f4f6fb !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
 .alphaPicker .button.is-active,
 .alphabetPicker .button.is-active,
 .alphaPickerButton.is-active,
 .alphabetPickerButton.is-active {
+    background: #f2f4f8 !important;
+    color: #0b0f18 !important;
+}
+
+.alphaPickerButton-tv:focus,
+.alphabetPickerButton-tv:focus,
+.alphaPickerButton-selected,
+.alphabetPickerButton-selected {
     background: #f2f4f8 !important;
     color: #0b0f18 !important;
 }
