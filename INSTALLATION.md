@@ -73,23 +73,24 @@ If you have access to the Jellyfin server files:
 
 ## 🎯 What Gets Styled
 
-This CSS theme modifies the following Jellyfin interface elements:
+This theme modifies the following Jellyfin interface elements based on **Apple's Human Interface Guidelines for tvOS**:
 
-### Navigation & Layout
-- Header bar with glassmorphism
-- Sidebar navigation menu
-- Breadcrumbs and page titles
+### Navigation & Layout (Apple's Top Bar Pattern)
+- Header bar with glassmorphism (backdrop-filter: blur(40px))
+- Sidebar navigation menu with focus states
+- Breadcrumbs and page titles using SF Pro Display weights
 
-### Content Cards
-- Movie/TV show posters
-- Episode thumbnails
-- Library items
+### Content Cards (Apple's Lockup Pattern)
+- Movie/TV show posters (2:3 aspect ratio)
+- Episode thumbnails (16:9 aspect ratio)
+- Library items with proper spacing
 - Home screen recommendations
+- **Focus States**: White glow + scale(1.08) + elevation
 
-### Media Details Pages
-- Backdrop images with gradients
-- Title and metadata display
-- Play and action buttons
+### Media Details Pages (Apple's Hero Layout)
+- Backdrop images with gradient overlays
+- Title and metadata display with SF typography
+- Play and action buttons (iOS-style)
 - Cast and crew information
 
 ### Video Player
