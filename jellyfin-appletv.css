@@ -1,6 +1,9 @@
 /* JellyTV - Apple TV tvOS 18 Theme for Jellyfin */
 /* Authentic Apple TV styling with SF Pro fonts, glassmorphism, and tvOS focus states */
 
+/* Inter Font - Best SF Pro alternative for web */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 /* Add-ons: Uncomment to enable */
 /* @import url(./assets/add-ons/media-bar-plugin-support-nightly.css); */
 /* @import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/assets/add-ons/custom-media-covers-latest-min.css"); */
@@ -155,12 +158,11 @@
 }
 
 html {
-    /* SF Pro System Font Stack - Apple Typography */
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    /* Inter Font - Closest match to SF Pro for web */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
         "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-optical-sizing: auto;
-    font-weight: 300;
-    /* Lighter weight for Apple elegance */
+    font-weight: 400;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -170,9 +172,7 @@ html {
     /* Apple-like typography */
     font-size: 16px;
     line-height: 1.47;
-    /* Apple's standard line height */
     letter-spacing: -0.022em;
-    /* Apple's tight letter spacing */
 }
 
 body {
@@ -261,14 +261,14 @@ body {
     color: var(--selectorBackgroundColorAlpha);
 }
 
-/* ===== tvOS Focus States - Subtle & Elegant ===== */
+/* ===== Clean Focus States - Brightness Only ===== */
 .card:focus .cardBox.visualCardBox,
 .card:focus .cardBox:not(.visualCardBox) .cardScalable {
-    /* Subtle focus indicator */
-    box-shadow: var(--shadowFocused);
-    transform: scale(1.03);
+    /* Clean focus - brightness increase */
+    filter: brightness(1.2);
     z-index: 10;
-    transition: var(--transitionNormal);
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
 }
 
 .mdl-radio__focus-circle,
@@ -390,32 +390,27 @@ body {
     color: var(--borderColor);
 }
 
-/* ===== tvOS Card Hover/Focus States - Subtle & Elegant ===== */
+/* ===== Clean Card Hover - No Scaling, Just Brightness ===== */
 .card-hoverable:hover .cardScalable,
 .card-hoverable:hover .visualCardBox {
-    /* Subtle scale - elegant not aggressive */
-    transform: scale(1.03);
-
-    /* Slightly enhanced shadow */
-    box-shadow: var(--shadowFocused);
+    /* Clean Apple-style hover - just subtle brightness increase */
+    filter: brightness(1.15);
 }
 
 .card-hoverable:hover .visualCardBox .cardScalable {
-    box-shadow: none;
+    filter: none;
 }
 
 .card-hoverable:hover .cardImageContainer {
-    /* Subtle zoom on hover */
-    transform: scale(1.02);
+    filter: brightness(1.05);
 }
 
 .card-hoverable .itemSelectionPanel {
-    transition: var(--transitionNormal);
+    transition: opacity 0.2s ease;
 }
 
 .card-hoverable:hover .cardScalable {
-    /* Card scale handled in main hover rule above */
-    position: relative;
+    cursor: pointer;
 }
 
 .card-hoverable:hover .itemSelectionPanel {
@@ -423,9 +418,8 @@ body {
 }
 
 .card-hoverable .cardScalable:active {
-    /* Press feedback */
-    transition: transform 0.1s ease-out;
-    transform: scale(1.02);
+    /* Press feedback - subtle darken */
+    filter: brightness(0.95);
 }
 
 .cardScalable:has(.cardOverlayButton-hover:hover)>.cardImageContainer {
