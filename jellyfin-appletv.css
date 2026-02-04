@@ -44,6 +44,11 @@
     --appletv-glass: rgba(28, 28, 30, 0.72);
     --appletv-glass-thick: rgba(28, 28, 30, 0.9);
 
+    /* Apple Music Brand Colors */
+    --applemusic-pink: #FA2D48;
+    --applemusic-red: #FC3C44;
+    --applemusic-gradient: linear-gradient(135deg, #FA2D48 0%, #FC3C44 100%);
+
     /* ===== Theme Variables (mapped to tvOS) ===== */
     --darkerGradientPoint: var(--appletv-black);
     --darkerGradientPointAlpha: rgba(0, 0, 0, 0.85);
@@ -261,14 +266,10 @@ body {
     color: var(--selectorBackgroundColorAlpha);
 }
 
-/* ===== Clean Focus States - Brightness Only ===== */
+/* ===== Focus States - White Border (ElegantFin Style) ===== */
 .card:focus .cardBox.visualCardBox,
 .card:focus .cardBox:not(.visualCardBox) .cardScalable {
-    /* Clean focus - brightness increase */
-    filter: brightness(1.2);
-    z-index: 10;
-    outline: 2px solid rgba(255, 255, 255, 0.5);
-    outline-offset: 2px;
+    border-color: white !important;
 }
 
 .mdl-radio__focus-circle,
@@ -390,36 +391,34 @@ body {
     color: var(--borderColor);
 }
 
-/* ===== Clean Card Hover - No Scaling, Just Brightness ===== */
+/* ===== ElegantFin-Style Glare Hover Effect ===== */
 .card-hoverable:hover .cardScalable,
 .card-hoverable:hover .visualCardBox {
-    /* Clean Apple-style hover - just subtle brightness increase */
-    filter: brightness(1.15);
+    /* White border highlight on hover */
+    border-color: white !important;
 }
 
 .card-hoverable:hover .visualCardBox .cardScalable {
-    filter: none;
+    border-color: var(--darkerBorderColor) !important;
 }
 
 .card-hoverable:hover .cardImageContainer {
-    filter: brightness(1.05);
+    /* Subtle scale on hover */
+    transform: scale(1.025);
 }
 
 .card-hoverable .itemSelectionPanel {
-    transition: opacity 0.2s ease;
+    transition: transform 0.125s;
 }
 
-.card-hoverable:hover .cardScalable {
-    cursor: pointer;
-}
-
+.card-hoverable:hover .cardScalable,
 .card-hoverable:hover .itemSelectionPanel {
-    opacity: 1;
+    transform: scale(1.02);
 }
 
 .card-hoverable .cardScalable:active {
-    /* Press feedback - subtle darken */
-    filter: brightness(0.95);
+    transition: transform 0.075s;
+    transform: scale(1);
 }
 
 .cardScalable:has(.cardOverlayButton-hover:hover)>.cardImageContainer {
