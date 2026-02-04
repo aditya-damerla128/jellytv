@@ -4154,56 +4154,85 @@ for extended styling, use the add-on */
 /* ===== APPLE MUSIC 1:1 STYLING ===== */
 /* ========================================== */
 
-/* Apple Music Now Playing - Album Art Centered with Blurred BG */
+/* Now Playing Page - No Extra Padding */
 .nowPlayingPage {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, var(--appletv-black) 100%);
+    background: var(--appletv-black);
+    padding-top: 0 !important;
 }
 
-.nowPlayingInfoContainer {
+/* Queue View - Side by Side Layout (Desktop) */
+.layout-desktop .nowPlayingPage {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    max-height: calc(100vh - 80px);
+    overflow: hidden;
+}
+
+/* Player Section (Left Side in Queue View) */
+.layout-desktop .nowPlayingInfoContainer {
+    position: sticky !important;
+    top: 1rem;
+    max-height: calc(100vh - 100px);
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(40px) !important;
+    -webkit-backdrop-filter: blur(40px) !important;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 2rem;
 }
 
-/* Album Art - Large Centered Square */
+/* Queue Section (Right Side) */
+.layout-desktop .nowPlayingPlaylist,
+.layout-desktop .playlistSection {
+    overflow-y: auto;
+    max-height: calc(100vh - 100px);
+    padding-bottom: 2rem;
+}
+
+/* Album Art - Smaller in Queue View */
 .nowPlayingPageImage {
-    width: 300px !important;
-    height: 300px !important;
+    width: 200px !important;
+    height: 200px !important;
     border-radius: 8px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1rem;
 }
 
 .layout-desktop .nowPlayingPageImage {
-    width: 350px !important;
-    height: 350px !important;
+    width: 280px !important;
+    height: 280px !important;
 }
 
-/* Song Title - Apple Music Style */
+/* Song Title */
 .nowPlayingSongName {
-    font-size: 1.5rem !important;
+    font-size: 1.25rem !important;
     font-weight: 600 !important;
     color: white !important;
     margin-bottom: 0.25rem;
 }
 
-/* Artist Name - Apple Music Red/Pink */
+/* Artist Name - Apple Music Red */
 .nowPlayingArtist {
-    font-size: 1.25rem !important;
+    font-size: 1rem !important;
     font-weight: 500 !important;
     color: var(--applemusic-red) !important;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 /* Album Name */
 .nowPlayingAlbum {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--appletv-text-secondary);
 }
 
-/* Progress/Seek Bar - Thin White Line */
+/* Progress Bar - Thin */
 .nowPlayingBar .itemProgressBar,
 .nowPlayingInfoContainer .itemProgressBar {
     height: 4px !important;
@@ -4217,7 +4246,7 @@ for extended styling, use the add-on */
     border-radius: 2px;
 }
 
-/* Bottom Player Bar - Apple Music Style */
+/* Bottom Player Bar */
 .nowPlayingBar {
     background: rgba(28, 28, 30, 0.95) !important;
     backdrop-filter: blur(50px) saturate(180%) !important;
@@ -4225,52 +4254,58 @@ for extended styling, use the add-on */
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Play/Pause Button - White Filled Circle */
+/* Play/Pause Button - Circular */
 .nowPlayingBar .playPauseButton,
 .nowPlayingInfoContainer .btnPlayPause {
     background: white !important;
     color: black !important;
     border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
 }
 
-/* Control Icons - White */
+/* Control Icons */
 .nowPlayingBar .material-icons,
 .nowPlayingInfoContainer .material-icons {
     color: white;
 }
 
-/* Apple Music Lyrics Page */
+/* Lyrics Page - Player Left, Lyrics Right (Desktop) */
+.layout-desktop .lyricPage {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 2rem;
+    background: var(--appletv-black);
+    padding: 1rem 2rem;
+    min-height: calc(100vh - 80px);
+}
+
 .lyricPage {
     background: var(--appletv-black);
-    padding: 2rem;
 }
 
 .lyricsLine {
-    font-size: 2.5rem !important;
+    font-size: 2rem !important;
     font-weight: 700 !important;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.35);
     text-align: center;
     transition: all 0.3s ease;
-    padding: 1rem 0;
+    padding: 0.75rem 0;
 }
 
 .currentLyric {
     color: white !important;
-    transform: scale(1.1);
+    font-size: 2.2rem !important;
+    transform: scale(1.05);
 }
 
 .pastLyric {
-    opacity: 0.3;
-    transform: scale(0.9);
+    opacity: 0.25;
 }
 
 .futureLyric {
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
-/* Apple Music Queue/Playlist */
+/* Queue/Playlist */
 .nowPlayingPlaylist {
     background: var(--appletv-black) !important;
 }
@@ -4284,10 +4319,10 @@ for extended styling, use the add-on */
 }
 
 .nowPlayingPlaylist .listItem:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
 }
 
-/* Currently Playing Track Highlight */
+/* Currently Playing Track */
 .listItem[data-type="Audio"]:has(.playlistIndexIndicatorImage) {
     background: rgba(255, 255, 255, 0.1) !important;
 }
@@ -4296,16 +4331,25 @@ for extended styling, use the add-on */
     background-color: var(--applemusic-red) !important;
 }
 
-/* Album Page - Apple Music Style Layout */
+/* ===== Album Page Fixes ===== */
 #itemDetailPage:has(.detailImageContainer .album),
 #itemDetailPage:has(.musicParentName) {
     background: var(--appletv-black);
 }
 
-/* Album Art on Album Page */
+/* Remove black bar - reduce top spacing */
+#itemDetailPage:has(.musicParentName) .itemBackdrop {
+    height: 40vh !important;
+}
+
+#itemDetailPage:has(.musicParentName) .detailPageWrapperContainer {
+    margin-top: -5vh;
+}
+
+/* Album Art Size */
 .detailImageContainer .card.backdropCard:has(.album) {
-    width: 280px !important;
-    max-width: 280px !important;
+    width: 220px !important;
+    max-width: 220px !important;
 }
 
 .detailImageContainer .card.backdropCard:has(.album) .cardScalable {
@@ -4315,26 +4359,27 @@ for extended styling, use the add-on */
 
 /* Album Title */
 #itemDetailPage .nameContainer>h1.itemName {
-    font-size: 2rem !important;
+    font-size: 1.75rem !important;
     font-weight: 700 !important;
 }
 
-/* Artist Name on Album Page */
+/* Artist Name */
 .musicParentName {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     color: var(--applemusic-red) !important;
 }
 
-/* Track List Styling */
+/* Track List */
 #childrenContent:has(.listItem[data-type="Audio"]) {
     background: transparent !important;
     border: none !important;
     border-radius: 0 !important;
+    padding: 0 !important;
 }
 
 #childrenContent .listItem[data-type="Audio"] {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 0.75rem 0;
+    padding: 0.5rem 0;
 }
 
 /* ========================================== */
