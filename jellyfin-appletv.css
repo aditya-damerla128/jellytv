@@ -266,11 +266,10 @@ body {
     color: var(--selectorBackgroundColorAlpha);
 }
 
-/* ===== Focus States - Scale + Brightness (Apple TV Style) ===== */
+/* ===== Focus States - White Border (ElegantFin Style) ===== */
 .card:focus .cardBox.visualCardBox,
 .card:focus .cardBox:not(.visualCardBox) .cardScalable {
-    transform: scale(1.05);
-    filter: brightness(1.1);
+    border-color: white !important;
 }
 
 .mdl-radio__focus-circle,
@@ -320,16 +319,19 @@ body {
     border: var(--defaultLighterBorder);
 }
 
-/* ===== Apple TV Card Styling - No Borders ===== */
+/* ===== tvOS Card Styling ===== */
 .cardScalable {
-    /* Apple TV cards are borderless with rounded corners */
+    /* tvOS cards have smooth rounded corners */
     border-radius: var(--largeRadius);
     border: none !important;
     overflow: hidden !important;
-    box-shadow: none;
 
-    /* Smooth transition */
-    transition: transform 0.2s ease, filter 0.2s ease;
+    /* Subtle shadow */
+    box-shadow: var(--shadow);
+
+    /* Smooth transition for focus states */
+    transition: var(--transitionNormal);
+    transition-property: transform, box-shadow;
 }
 
 @supports (aspect-ratio: 1 / 1) {
@@ -354,18 +356,19 @@ body {
 .paperList {
     background-color: var(--headerColor) !important;
     border-radius: var(--largeRadius) !important;
-    border: none !important;
-    box-shadow: none !important;
+    border: var(--defaultBorder) !important;
+    box-shadow: unset !important;
     overflow: hidden;
 }
 
 .layout-desktop .visualCardBox {
-    border: none !important;
+    border-width: var(--borderWidthDouble) !important;
 }
 
 .visualCardBox .cardScalable {
-    border: none !important;
+    border-width: 0 0 var(--borderWidth) 0 !important;
     border-radius: 0 !important;
+    border-color: var(--darkerBorderColor) !important;
 }
 
 .cardImageContainer {
@@ -388,35 +391,34 @@ body {
     color: var(--borderColor);
 }
 
-/* ===== Apple TV Card Hover - No Borders, Just Scale ===== */
+/* ===== ElegantFin-Style Glare Hover Effect ===== */
 .card-hoverable:hover .cardScalable,
 .card-hoverable:hover .visualCardBox {
-    /* Apple TV: slight scale up, no border */
-    transform: scale(1.05);
-    filter: brightness(1.1);
+    /* White border highlight on hover */
+    border-color: white !important;
 }
 
 .card-hoverable:hover .visualCardBox .cardScalable {
-    transform: none;
-    filter: none;
+    border-color: var(--darkerBorderColor) !important;
 }
 
 .card-hoverable:hover .cardImageContainer {
-    /* Image zooms slightly */
-    transform: scale(1.08);
+    /* Subtle scale on hover */
+    transform: scale(1.025);
 }
 
 .card-hoverable .itemSelectionPanel {
-    transition: opacity 0.2s ease;
+    transition: transform 0.125s;
 }
 
+.card-hoverable:hover .cardScalable,
 .card-hoverable:hover .itemSelectionPanel {
-    opacity: 1;
+    transform: scale(1.02);
 }
 
 .card-hoverable .cardScalable:active {
-    transform: scale(0.98);
-    filter: brightness(0.95);
+    transition: transform 0.075s;
+    transform: scale(1);
 }
 
 .cardScalable:has(.cardOverlayButton-hover:hover)>.cardImageContainer {
@@ -4149,308 +4151,3 @@ for extended styling, use the add-on */
 }
 
 /* basic styling for the Media Bar Plugin - end */
-
-/* ========================================== */
-/* ===== APPLE MUSIC 1:1 STYLING ===== */
-/* ========================================== */
-
-/* NOTE: Minimal styling to avoid breaking Jellyfin's layout */
-
-/* Song Title */
-.nowPlayingSongName {
-    font-size: 1.25rem !important;
-    font-weight: 600 !important;
-    color: white !important;
-}
-
-/* Artist Name - Apple Music Red */
-.nowPlayingArtist {
-    font-size: 1rem !important;
-    font-weight: 500 !important;
-    color: var(--applemusic-red) !important;
-}
-
-/* Album Name */
-.nowPlayingAlbum {
-    font-size: 0.9rem;
-    color: var(--appletv-text-secondary);
-}
-
-/* Progress Bar - Thin White */
-.nowPlayingBar .itemProgressBar,
-.nowPlayingInfoContainer .itemProgressBar {
-    height: 4px !important;
-    background: rgba(255, 255, 255, 0.2) !important;
-    border-radius: 2px;
-}
-
-.nowPlayingBar .itemProgressBarForeground,
-.nowPlayingInfoContainer .itemProgressBarForeground {
-    background: white !important;
-    border-radius: 2px;
-}
-
-/* Bottom Player Bar - Glassmorphic */
-.nowPlayingBar {
-    background: rgba(28, 28, 30, 0.95) !important;
-    backdrop-filter: blur(50px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(50px) saturate(180%) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Play/Pause Button */
-.nowPlayingBar .playPauseButton,
-.nowPlayingInfoContainer .btnPlayPause {
-    background: white !important;
-    color: black !important;
-    border-radius: 50%;
-}
-
-/* Control Icons */
-.nowPlayingBar .material-icons,
-.nowPlayingInfoContainer .material-icons {
-    color: white;
-}
-
-/* Lyrics Page */
-.lyricPage {
-    background: var(--appletv-black);
-}
-
-.lyricsLine {
-    font-size: 2rem !important;
-    font-weight: 700 !important;
-    color: rgba(255, 255, 255, 0.35);
-    text-align: center;
-    transition: all 0.3s ease;
-    padding: 0.75rem 0;
-}
-
-.currentLyric {
-    color: white !important;
-    font-size: 2.2rem !important;
-    transform: scale(1.05);
-}
-
-.pastLyric {
-    opacity: 0.25;
-}
-
-.futureLyric {
-    opacity: 0.4;
-}
-
-/* Queue/Playlist */
-.nowPlayingPlaylist {
-    background: var(--appletv-black) !important;
-}
-
-.nowPlayingPlaylist .listItem {
-    background: transparent;
-    border: none;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    margin-bottom: 2px;
-}
-
-.nowPlayingPlaylist .listItem:hover {
-    background: rgba(255, 255, 255, 0.08);
-}
-
-/* Currently Playing Track */
-.listItem[data-type="Audio"]:has(.playlistIndexIndicatorImage) {
-    background: rgba(255, 255, 255, 0.1) !important;
-}
-
-.playlistIndexIndicatorImage {
-    background-color: var(--applemusic-red) !important;
-}
-
-/* ===== Album Page Fixes ===== */
-#itemDetailPage:has(.detailImageContainer .album),
-#itemDetailPage:has(.musicParentName) {
-    background: var(--appletv-black);
-}
-
-/* Remove black bar - reduce top spacing */
-#itemDetailPage:has(.musicParentName) .itemBackdrop {
-    height: 40vh !important;
-}
-
-#itemDetailPage:has(.musicParentName) .detailPageWrapperContainer {
-    margin-top: -5vh;
-}
-
-/* Album Art Size */
-.detailImageContainer .card.backdropCard:has(.album) {
-    width: 220px !important;
-    max-width: 220px !important;
-}
-
-.detailImageContainer .card.backdropCard:has(.album) .cardScalable {
-    border-radius: 8px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-}
-
-/* Album Title */
-#itemDetailPage .nameContainer>h1.itemName {
-    font-size: 1.75rem !important;
-    font-weight: 700 !important;
-}
-
-/* Artist Name */
-.musicParentName {
-    font-size: 1.1rem;
-    color: var(--applemusic-red) !important;
-}
-
-/* Track List */
-#childrenContent:has(.listItem[data-type="Audio"]) {
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
-}
-
-#childrenContent .listItem[data-type="Audio"] {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 0.5rem 0;
-}
-
-/* ========================================== */
-/* ===== APPLE TV 1:1 DETAIL PAGE ===== */
-/* ========================================== */
-
-/* Full Backdrop Movie/Show Detail */
-.layout-desktop .itemBackdrop {
-    height: 70vh !important;
-}
-
-.layout-desktop .detailPageWrapperContainer {
-    background: linear-gradient(0deg,
-            var(--appletv-black) 0%,
-            var(--appletv-black) 20%,
-            transparent 60%) !important;
-    min-height: 50vh;
-}
-
-/* Info Section at Bottom */
-.detailPagePrimaryContainer {
-    padding-top: 0;
-}
-
-/* Title - Large White */
-.layout-desktop .nameContainer>h1.itemName,
-.layout-desktop .nameContainer>h1.parentName {
-    font-size: 3.5rem !important;
-    font-weight: 700 !important;
-    color: white !important;
-}
-
-/* Metadata Row */
-.itemMiscInfo-primary {
-    font-size: 1rem;
-    color: var(--appletv-text-secondary);
-}
-
-/* Play Button - Apple TV Style (White Pill) */
-.btnPlay.detailButton {
-    background: white !important;
-    color: black !important;
-    border: none !important;
-    border-radius: 30px !important;
-    padding: 0.75rem 2rem !important;
-    font-weight: 600 !important;
-    font-size: 1rem !important;
-    min-width: 140px;
-}
-
-.btnPlay.detailButton:hover {
-    background: rgba(255, 255, 255, 0.9) !important;
-    transform: scale(1.02);
-}
-
-/* Other Detail Buttons - Circular Icons */
-.detailButton:not(.btnPlay) {
-    background: rgba(255, 255, 255, 0.15) !important;
-    border: none !important;
-    border-radius: 50% !important;
-    width: 48px;
-    height: 48px;
-    padding: 0 !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.detailButton:not(.btnPlay):hover {
-    background: rgba(255, 255, 255, 0.25) !important;
-}
-
-/* Description/Overview */
-.detail-clamp-text {
-    color: var(--appletv-text-secondary);
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-/* Metadata Details Box */
-.itemDetailsGroup {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: none !important;
-    border-radius: 12px;
-}
-
-.detailsGroupItem {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-}
-
-/* Track Selection Dropdowns */
-.trackSelections {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: none !important;
-    border-radius: 12px;
-}
-
-/* ========================================== */
-/* ===== APPLE TV HOME PAGE LAYOUT ===== */
-/* ========================================== */
-
-/* Card Sizes - Larger like Apple TV */
-.portraitCard {
-    --cardCount: 6;
-}
-
-.backdropCard,
-.overflowBackdropCard {
-    --cardCount: 4;
-}
-
-/* Section Headers */
-.sectionTitle {
-    font-size: 1.5rem !important;
-    font-weight: 700 !important;
-    color: white;
-}
-
-/* More Generous Spacing */
-.itemsContainer {
-    gap: 1.5rem;
-}
-
-/* Remove all card shadows and borders globally */
-.cardBox {
-    box-shadow: none !important;
-    border: none !important;
-}
-
-/* Card Text Styling */
-.cardText {
-    color: var(--appletv-text-primary);
-    font-weight: 500;
-}
-
-.cardText-secondary {
-    color: var(--appletv-text-secondary);
-    font-weight: 400;
-}
