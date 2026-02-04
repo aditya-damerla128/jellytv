@@ -125,11 +125,11 @@
     --blurLarge: blur(40px);
     --blurLargest: blur(60px);
 
-    /* ===== Shadows - tvOS Elevation ===== */
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    --shadowElevated: 0 10px 30px rgba(0, 0, 0, 0.5);
-    --shadowFocused: 0 15px 40px rgba(0, 0, 0, 0.7);
-    --focusGlow: 0 0 0 4px rgba(255, 255, 255, 0.25);
+    /* ===== Shadows - Subtle tvOS Elevation ===== */
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadowElevated: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadowFocused: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --focusGlow: none;
 
     /* ===== Animation Timing - tvOS Motion ===== */
     --transitionFast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
@@ -155,21 +155,24 @@
 }
 
 html {
-    /* SF Pro System Font Stack for tvOS authenticity */
+    /* SF Pro System Font Stack - Apple Typography */
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
-        system-ui, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400;
+    font-weight: 300;
+    /* Lighter weight for Apple elegance */
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: transparent !important;
 
-    /* tvOS base font size for TV viewing distance */
+    /* Apple-like typography */
     font-size: 16px;
-    line-height: 1.4;
-    letter-spacing: -0.01em;
+    line-height: 1.47;
+    /* Apple's standard line height */
+    letter-spacing: -0.022em;
+    /* Apple's tight letter spacing */
 }
 
 body {
@@ -258,13 +261,12 @@ body {
     color: var(--selectorBackgroundColorAlpha);
 }
 
-/* ===== tvOS Focus States - Apple TV Signature Look ===== */
+/* ===== tvOS Focus States - Subtle & Elegant ===== */
 .card:focus .cardBox.visualCardBox,
 .card:focus .cardBox:not(.visualCardBox) .cardScalable {
-    /* Apple TV white glow focus indicator */
-    box-shadow: var(--focusGlow), var(--shadowFocused) !important;
-    border-color: rgba(255, 255, 255, 0.4) !important;
-    transform: scale(1.05);
+    /* Subtle focus indicator */
+    box-shadow: var(--shadowFocused);
+    transform: scale(1.03);
     z-index: 10;
     transition: var(--transitionNormal);
 }
@@ -323,12 +325,12 @@ body {
     border: none !important;
     overflow: hidden !important;
 
-    /* tvOS elevation shadow */
-    box-shadow: var(--shadowElevated);
+    /* Subtle shadow */
+    box-shadow: var(--shadow);
 
     /* Smooth transition for focus states */
     transition: var(--transitionNormal);
-    transition-property: transform, box-shadow, border-color;
+    transition-property: transform, box-shadow;
 }
 
 @supports (aspect-ratio: 1 / 1) {
@@ -388,23 +390,17 @@ body {
     color: var(--borderColor);
 }
 
-/* ===== tvOS Card Hover/Focus States ===== */
+/* ===== tvOS Card Hover/Focus States - Subtle & Elegant ===== */
 .card-hoverable:hover .cardScalable,
 .card-hoverable:hover .visualCardBox {
-    /* Apple TV signature: scale up 8% and lift */
-    transform: scale(1.08) translateY(-8px);
+    /* Subtle scale - elegant not aggressive */
+    transform: scale(1.03);
 
-    /* Enhanced shadow for elevation */
-    box-shadow: var(--focusGlow), var(--shadowFocused);
-
-    /* White glow border - Apple TV focus indicator */
-    border-color: rgba(255, 255, 255, 0.3) !important;
-
-    z-index: 10;
+    /* Slightly enhanced shadow */
+    box-shadow: var(--shadowFocused);
 }
 
 .card-hoverable:hover .visualCardBox .cardScalable {
-    border-color: var(--appletv-border) !important;
     box-shadow: none;
 }
 
