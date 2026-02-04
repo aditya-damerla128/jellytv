@@ -4154,46 +4154,40 @@ for extended styling, use the add-on */
 /* ===== APPLE MUSIC 1:1 STYLING ===== */
 /* ========================================== */
 
-/* Now Playing Page - No Extra Padding */
+/* Now Playing Page */
 .nowPlayingPage {
     background: var(--appletv-black);
-    padding-top: 0 !important;
 }
 
-/* Queue View - Side by Side Layout (Desktop) */
-.layout-desktop .nowPlayingPage {
-    display: grid;
-    grid-template-columns: 400px 1fr;
-    gap: 2rem;
-    padding: 1rem 2rem;
-    max-height: calc(100vh - 80px);
-    overflow: hidden;
-}
-
-/* Player Section (Left Side in Queue View) */
+/* Queue View - Compact Player at Top */
 .layout-desktop .nowPlayingInfoContainer {
-    position: sticky !important;
-    top: 1rem;
-    max-height: calc(100vh - 100px);
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.05) !important;
+    padding: 1rem 2rem;
+    background: rgba(28, 28, 30, 0.8) !important;
     backdrop-filter: blur(40px) !important;
     -webkit-backdrop-filter: blur(40px) !important;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 0 !important;
     box-shadow: none !important;
     display: flex;
-    flex-direction: column;
+    flex-direction: row !important;
     align-items: center;
-    text-align: center;
+    gap: 1.5rem;
+    max-height: 120px;
 }
 
-/* Queue Section (Right Side) */
+/* Album Art - Small in Queue View */
+.layout-desktop .nowPlayingInfoContainer .nowPlayingPageImage {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 6px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* Queue Section - Full Width Below */
 .layout-desktop .nowPlayingPlaylist,
 .layout-desktop .playlistSection {
-    overflow-y: auto;
-    max-height: calc(100vh - 100px);
-    padding-bottom: 2rem;
+    padding: 1rem;
 }
 
 /* Album Art - Smaller in Queue View */
