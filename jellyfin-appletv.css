@@ -4154,62 +4154,13 @@ for extended styling, use the add-on */
 /* ===== APPLE MUSIC 1:1 STYLING ===== */
 /* ========================================== */
 
-/* Now Playing Page */
-.nowPlayingPage {
-    background: var(--appletv-black);
-}
-
-/* Queue View - Compact Player at Top */
-.layout-desktop .nowPlayingInfoContainer {
-    padding: 1rem 2rem;
-    background: rgba(28, 28, 30, 0.8) !important;
-    backdrop-filter: blur(40px) !important;
-    -webkit-backdrop-filter: blur(40px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    display: flex;
-    flex-direction: row !important;
-    align-items: center;
-    gap: 1.5rem;
-    max-height: 120px;
-}
-
-/* Album Art - Small in Queue View */
-.layout-desktop .nowPlayingInfoContainer .nowPlayingPageImage {
-    width: 80px !important;
-    height: 80px !important;
-    border-radius: 6px;
-    margin: 0;
-    flex-shrink: 0;
-}
-
-/* Queue Section - Full Width Below */
-.layout-desktop .nowPlayingPlaylist,
-.layout-desktop .playlistSection {
-    padding: 1rem;
-}
-
-/* Album Art - Smaller in Queue View */
-.nowPlayingPageImage {
-    width: 200px !important;
-    height: 200px !important;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    margin-bottom: 1rem;
-}
-
-.layout-desktop .nowPlayingPageImage {
-    width: 280px !important;
-    height: 280px !important;
-}
+/* NOTE: Minimal styling to avoid breaking Jellyfin's layout */
 
 /* Song Title */
 .nowPlayingSongName {
     font-size: 1.25rem !important;
     font-weight: 600 !important;
     color: white !important;
-    margin-bottom: 0.25rem;
 }
 
 /* Artist Name - Apple Music Red */
@@ -4217,7 +4168,6 @@ for extended styling, use the add-on */
     font-size: 1rem !important;
     font-weight: 500 !important;
     color: var(--applemusic-red) !important;
-    margin-bottom: 1rem;
 }
 
 /* Album Name */
@@ -4226,7 +4176,7 @@ for extended styling, use the add-on */
     color: var(--appletv-text-secondary);
 }
 
-/* Progress Bar - Thin */
+/* Progress Bar - Thin White */
 .nowPlayingBar .itemProgressBar,
 .nowPlayingInfoContainer .itemProgressBar {
     height: 4px !important;
@@ -4240,7 +4190,7 @@ for extended styling, use the add-on */
     border-radius: 2px;
 }
 
-/* Bottom Player Bar */
+/* Bottom Player Bar - Glassmorphic */
 .nowPlayingBar {
     background: rgba(28, 28, 30, 0.95) !important;
     backdrop-filter: blur(50px) saturate(180%) !important;
@@ -4248,7 +4198,7 @@ for extended styling, use the add-on */
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Play/Pause Button - Circular */
+/* Play/Pause Button */
 .nowPlayingBar .playPauseButton,
 .nowPlayingInfoContainer .btnPlayPause {
     background: white !important;
@@ -4262,16 +4212,7 @@ for extended styling, use the add-on */
     color: white;
 }
 
-/* Lyrics Page - Player Left, Lyrics Right (Desktop) */
-.layout-desktop .lyricPage {
-    display: grid;
-    grid-template-columns: 350px 1fr;
-    gap: 2rem;
-    background: var(--appletv-black);
-    padding: 1rem 2rem;
-    min-height: calc(100vh - 80px);
-}
-
+/* Lyrics Page */
 .lyricPage {
     background: var(--appletv-black);
 }
